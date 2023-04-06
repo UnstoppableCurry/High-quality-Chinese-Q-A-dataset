@@ -9,12 +9,12 @@
     - 有些特殊的关系与实体难以构造通顺语句 此项工作需要更细致的清洗工作,但不影响此为一个高质量知识库数据集
 
   - Q&A 数据 Example
-    - ![image](https://user-images.githubusercontent.com/65523997/230322735-1c775257-5d24-405e-b574-2b8e1f05fbcc.png)
+    - ![image](https://user-images.githubusercontent.com/65523997/230324020-5a481e73-420c-48fd-9eb3-2ef2491ab969.png)
     - 下载链接：https://pan.baidu.com/s/1JnRp8orT8kAIjAoZI9QA4g?pwd=kbge 提取码：kbge 
     - 做法 1.拼接三元组数据构造QA数据 2.将数据shuffle
   
   - Q&A & Cot Prompt 数据
-    - ![image](https://user-images.githubusercontent.com/65523997/230323509-498d8199-395b-4306-9456-5d7d0d97aeda.png)
+    - ![image](https://user-images.githubusercontent.com/65523997/230326138-7b360181-a838-4ea6-a639-ddf25b79f880.png)
 
   
 
