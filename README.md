@@ -14,11 +14,11 @@
     - 做法 1.拼接三元组数据构造QA数据 2.将数据shuffle
   
   - Q&A & Cot Prompt 数据
+    - 1轮shuffle 数据下载链接：https://pan.baidu.com/s/1K1rCqOmJ0ZsUd4FFY6z4rg?pwd=fw69 提取码：fw69 
+    - 50轮 shuffle 数据下载链接：https://pan.baidu.com/s/1MF-QJTLOXpvuzrGxt0GQiw?pwd=ctou 提取码：ctou 
     - ![image](https://user-images.githubusercontent.com/65523997/230326138-7b360181-a838-4ea6-a639-ddf25b79f880.png)
     - 上图整理了一下\n 与 \t 为了方便理解 真实数据格式如下
       - q:什么是梨果寄生属？\n  a:我们可以这样做, 先考虑一下我们知道梨果寄生属的什么信息？\n 我们知道:\n\t0. 如何描述梨果寄生属。\n\t1. 梨果寄生属的中文学名。\n\t2. 梨果寄生属的拉丁学名。\n\t3. 梨果寄生属的界。\n\t4. 梨果寄生属的科。\n\t5. 梨果寄生属的物种数量。\n\t6. 梨果寄生属的中国植物志。\n\t7. 梨果寄生属的标签。\n那么很显然答案是\n\t0. 这样描述其梨果寄生属，分布于亚洲东南部和南部，我国产11种，其中红花寄生S. parasitica L. 供药用。\n\t1. 其中文学名是梨果寄生属。\n\t2. 其拉丁学名是Scurrula L.。\n\t3. 其界是植物界。\n\t4. 其科是桑寄生科。\n\t5. 其物种数量是约60种。\n\t6. 其中国植物>志是24:108。\n\t7. 梨果寄生属的标签可以是自然,生物物种,植物。\n
-    - 1轮shuffle 数据下载链接：https://pan.baidu.com/s/1K1rCqOmJ0ZsUd4FFY6z4rg?pwd=fw69 提取码：fw69 
-    - 50轮 shuffle 数据下载链接：https://pan.baidu.com/s/1MF-QJTLOXpvuzrGxt0GQiw?pwd=ctou 提取码：ctou 
 
 - 本人使用rwkv 1B5 微调了少量 Cot Q&A数据
   - 发现 少量的prompt cot数据进行LORA 模型拥有良好的zeroshot能力,将原有知识能力迁移到微调任务中
