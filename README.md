@@ -15,6 +15,18 @@
   
   - Q&A & Cot Prompt 数据
     - ![image](https://user-images.githubusercontent.com/65523997/230326138-7b360181-a838-4ea6-a639-ddf25b79f880.png)
+    - 上图整理了一下\n 与 \t 为了方便理解 真是数据格式如下
+    - ![image](https://user-images.githubusercontent.com/65523997/230327435-225b1d8d-3db5-4122-aa6a-6fa185077521.png)
+    - 1轮shuffle 数据下载链接：https://pan.baidu.com/s/1K1rCqOmJ0ZsUd4FFY6z4rg?pwd=fw69 提取码：fw69 
+    - 50轮 shuffle 数据下载链接：https://pan.baidu.com/s/1MF-QJTLOXpvuzrGxt0GQiw?pwd=ctou 提取码：ctou 
+
+- 本人使用rwkv 1B5 微调了少量 Cot Q&A数据
+  - 发现 少量的prompt cot数据进行LORA 模型拥有良好的zeroshot能力,将原有知识能力迁移到微调任务中
+
+- 如果想要加入此项目一起贡献欢迎发邮箱 294957500@qq.com 此诚存亡之秋,期望大家一起努力构建中文数据集
+
+
+
 
   
 
