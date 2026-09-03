@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>高质量中文知识问答数据集 · 静态展示</title>
+  <meta name="description" content="由 ownthink_v2 知识图谱三元组清洗得到的中文 Q&amp;A 与 CoT Prompt 数据说明页。展示来源、清洗脚本、README 原有样例与使用限制。本页是静态说明，不是在线问答运行环境。">
+  <meta name="robots" content="index,follow">
+  <meta name="author" content="UnstoppableCurry">
+  <meta name="theme-color" content="#9b1d1d">
+  <meta name="color-scheme" content="light dark">
+  <link rel="canonical" href="https://unstoppablecurry.github.io/High-quality-Chinese-Q-A-dataset/">
+  <link rel="alternate" hreflang="zh-CN" href="https://unstoppablecurry.github.io/High-quality-Chinese-Q-A-dataset/">
+  <link rel="alternate" hreflang="x-default" href="https://unstoppablecurry.github.io/High-quality-Chinese-Q-A-dataset/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:site_name" content="高质量中文知识问答数据集">
+  <meta property="og:title" content="高质量中文知识问答数据集 · 静态展示">
+  <meta property="og:description" content="ownthink_v2 三元组清洗得到的中文 Q&amp;A 与 CoT Prompt 说明页。只陈述 README 与 dataclear 脚本中可核验的事实。">
+  <meta property="og:url" content="https://unstoppablecurry.github.io/High-quality-Chinese-Q-A-dataset/">
+  <meta property="og:image" content="https://unstoppablecurry.github.io/High-quality-Chinese-Q-A-dataset/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="高质量中文知识问答数据集封面：数据展示，非在线运行环境">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="高质量中文知识问答数据集 · 静态展示">
+  <meta name="twitter:description" content="ownthink_v2 三元组清洗得到的中文 Q&amp;A 与 CoT Prompt 说明页。静态展示，不是在线运行环境。">
+  <meta name="twitter:image" content="https://unstoppablecurry.github.io/High-quality-Chinese-Q-A-dataset/assets/og.png">
+
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="./assets/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
+  <link rel="manifest" href="./site.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;700&display=swap">
+  <link rel="stylesheet" href="./styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "name": "高质量中文知识问答数据集",
+        "alternateName": "High-quality Chinese Q&A dataset",
+        "url": "https://unstoppablecurry.github.io/High-quality-Chinese-Q-A-dataset/",
+        "inLanguage": "zh-CN",
+        "description": "ownthink_v2 知识图谱三元组清洗得到的中文 Q&A 与 CoT Prompt 静态说明页。",
+        "publisher": {
+          "@type": "Person",
+          "name": "UnstoppableCurry",
+          "url": "https://github.com/UnstoppableCurry"
+        }
+      },
+      {
+        "@type": "Dataset",
+        "name": "高质量中文知识问答数据集",
+        "alternateName": "High-quality Chinese Q&A dataset",
+        "url": "https://unstoppablecurry.github.io/High-quality-Chinese-Q-A-dataset/",
+        "sameAs": "https://github.com/UnstoppableCurry/High-quality-Chinese-Q-A-dataset",
+        "inLanguage": "zh-CN",
+        "description": "通过清洗 ownthink_v2 知识图谱三元组得到 Q&A 数据以及 Prompt QA 多轮 CoT 数据。源数据规模与下载链接以仓库 README 为准。",
+        "isBasedOn": "ownthink_v2",
+        "creator": {
+          "@type": "Person",
+          "name": "UnstoppableCurry",
+          "email": "mailto:294957500@qq.com"
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+
+  <header class="site-header" id="top">
+    <div class="wrap header-inner">
+      <a class="brand" href="./">
+        <span class="brand-mark" aria-hidden="true">问</span>
+        <span>
+          <span class="brand-title">中文知识问答数据</span>
+          <span class="brand-sub">静态展示 · 非运行环境</span>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+        菜单
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="本页章节">
+        <a href="#source">来源</a>
+        <a href="#pipeline">流水线</a>
+        <a href="#examples">样例</a>
+        <a href="#usage">使用</a>
+        <a href="#limits">局限</a>
+      </nav>
+      <div class="header-tools">
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="切换颜色主题">主题</button>
+        <a class="btn btn-ghost" href="https://github.com/UnstoppableCurry/High-quality-Chinese-Q-A-dataset">仓库</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="page-title">
+      <p class="eyebrow">数据档案 · 脚本清洗 · GitHub Pages</p>
+      <h1 id="page-title">高质量中文知识问答数据集</h1>
+      <p class="hero-en" lang="en">High-quality Chinese Q&amp;A dataset — a static data showcase, not an in-browser runtime.</p>
+      <p class="lead">此项目通过清洗 <span lang="en">ownthink_v2</span> 知识图谱三元组，构造 Q&amp;A 数据以及 Prompt QA 多轮 CoT 数据，用以助力中文 LLM。本页只做说明与样例核验，不提供在线推理、检索或下载代理。</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#examples">查看已核验样例</a>
+        <a class="btn btn-ghost" href="#usage">下载与脚本用法</a>
+      </div>
+      <aside class="evidence" aria-label="证据范围">
+        <p class="evidence-title">证据范围</p>
+        <p>本页数字、下载链接、样例文本与微调观察，全部来自仓库 <a href="https://github.com/UnstoppableCurry/High-quality-Chinese-Q-A-dataset/blob/main/README.md">README</a> 或 <a href="https://github.com/UnstoppableCurry/High-quality-Chinese-Q-A-dataset/tree/main/dataclear"><code class="code-chip">dataclear/</code></a> 脚本。README 标题自称「最大开源中文知识问答三元组数据集」，此处按原文转述，不把它当作已独立核验的排名。清洗后的问答条数、基准分数、用户量等，仓库未给出，本页也不补写。</p>
+      </aside>
+      <dl class="facts">
+        <div class="fact">
+          <dt>源数据规模</dt>
+          <dd>ownthink 数据共有约 1.5 亿行关系实体三元组。</dd>
+          <span class="tag">README 原文</span>
+        </div>
+        <div class="fact">
+          <dt>仓库产出</dt>
+          <dd>Q&amp;A 文本，以及 1 轮 / 50 轮 shuffle 的 Prompt CoT 文本。</dd>
+          <span class="tag">README 原文</span>
+        </div>
+        <div class="fact">
+          <dt>作者实验观察</dt>
+          <dd>用 <span lang="en">RWKV 1B5</span> 对少量 CoT Q&amp;A 做 <span lang="en">LoRA</span> 后，作者写到模型有良好 zeroshot 能力。</dd>
+          <span class="tag">定性自述，无分数</span>
+        </div>
+      </dl>
+    </section>
+
+    <section class="section" id="source" aria-labelledby="source-title">
+      <div class="wrap">
+        <h2 id="source-title">来源与问题</h2>
+        <p class="section-lead">原始材料是 ownthink_v2 知识图谱三元组。README 写到：若做成 Neo4j 数据库，基本等价于简易版的百度百科或维基百科。字段在 README 截图里可见为「实体 / 属性 / 值」。</p>
+        <div class="figure-grid">
+          <figure>
+            <img
+              src="./assets/examples/ownthink-triples-1.png"
+              width="1348"
+              height="284"
+              alt="终端中的 ownthink 三列文本：实体、属性、值。可见胶饴、词条、红色食品等条目及其描述、标签、中文名等属性。"
+              decoding="async">
+            <figcaption>
+              原始三元组样例。来自 README「原始数据 Example」。
+              <a href="https://user-images.githubusercontent.com/65523997/230326683-6175c2e8-ee27-4008-b71e-eb4f5e29f594.png">原图</a>
+            </figcaption>
+          </figure>
+          <figure>
+            <img
+              src="./assets/examples/ownthink-triples-2.png"
+              width="1982"
+              height="101"
+              alt="终端目录列表，显示 ownthinData_0000.csv 到 ownthinData_0025.csv 等分片文件。"
+              decoding="async">
+            <figcaption>
+              源数据被切成 <code class="code-chip">ownthinData_xxxx.csv</code> 分片。来自 README「原始数据 Example」。
+              <a href="https://user-images.githubusercontent.com/65523997/230321437-e89f0e6f-fa68-417c-89df-a6f1381a32e6.png">原图</a>
+            </figcaption>
+          </figure>
+        </div>
+        <p class="section-lead" style="margin-top:1.2rem">README 同时指出问题：有些特殊的关系与实体难以构造通顺语句，这项工作需要更细致的清洗；但不影响作者将其视为高质量知识库数据集。脚本侧也能看到分片、去空值和按实体聚合等处理，但仓库没有发布「已洗净条数」。</p>
+      </div>
+    </section>
+
+    <section class="section" id="pipeline" aria-labelledby="pipeline-title">
+      <div class="wrap">
+        <h2 id="pipeline-title">清洗流水线</h2>
+        <p class="section-lead">下列步骤按 <code class="code-chip">dataclear/</code> 现有脚本归纳，不是另写的新流水线。路径在源码里是作者机器上的绝对路径，克隆后需要自行改路径才能跑通。</p>
+        <ol class="pipeline">
+          <li class="step">
+            <span class="step-index" aria-hidden="true">1</span>
+            <div>
+              <h3>切分与载入 · <a href="https://github.com/UnstoppableCurry/High-quality-Chinese-Q-A-dataset/blob/main/dataclear/data_load.py"><code class="code-chip">data_load.py</code></a> / <a href="https://github.com/UnstoppableCurry/High-quality-Chinese-Q-A-dataset/blob/main/dataclear/data_load2.py"><code class="code-chip">data_load2.py</code></a></h3>
+              <p><code class="code-chip">data_load.py</code> 读取 ownthink V2 分片并写成 tab 分隔文件，另有 Neo4j 风格实体 / 关系导出（<code class="code-chip">entity:ID</code>、<code class="code-chip">:START_ID</code>、<code class="code-chip">relationship</code>、<code class="code-chip">:END_ID</code>）。脚本注释写明切分处理内存约 318.3814、按 16G 内存切片。<code class="code-chip">data_load2.py</code> 按 100 万行分块读取「实体 / 属性 / 值」，写出 entity 与 relationship CSV。</p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-index" aria-hidden="true">2</span>
+            <div>
+              <h3>合并分片 · <a href="https://github.com/UnstoppableCurry/High-quality-Chinese-Q-A-dataset/blob/main/dataclear/mearge_data.py"><code class="code-chip">mearge_data.py</code></a></h3>
+              <p>把同目录下多个 CSV 追加合并。文件名保持仓库原拼写。</p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-index" aria-hidden="true">3</span>
+            <div>
+              <h3>构造问答句 · <a href="https://github.com/UnstoppableCurry/High-quality-Chinese-Q-A-dataset/blob/main/dataclear/clear_qa_data.py"><code class="code-chip">clear_qa_data.py</code></a></h3>
+              <p>跳过表头和不足三列的行；实体名里的 <code class="code-chip">[类型]</code> 会拆出。关系为「描述」时问「如何描述 X？」，答「这样描述 X …。」；其他关系问「X 的 Y 是什么？」，答「X 的 Y 是 Z。」写出 <code class="code-chip">q: … a: …</code>。积满约 10 万条后打乱并追加写入。这与 README「拼接三元组数据构造 QA 数据，再 shuffle」一致。</p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-index" aria-hidden="true">4</span>
+            <div>
+              <h3>构造 CoT Prompt · <a href="https://github.com/UnstoppableCurry/High-quality-Chinese-Q-A-dataset/blob/main/dataclear/clear_%E5%BC%BA%E5%8C%96_data.py"><code class="code-chip">clear_强化_data.py</code></a></h3>
+              <p>按实体聚合多条属性，生成「什么是 X？」——先列出已知信息，再写「那么很显然答案是」及对应答句。「描述」「标签」有单独句式。真实文件里换行和制表符被写成字面量 <code class="code-chip">\\n</code> 与 <code class="code-chip">\\t</code>。</p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-index" aria-hidden="true">5</span>
+            <div>
+              <h3>打乱与并行 · <a href="https://github.com/UnstoppableCurry/High-quality-Chinese-Q-A-dataset/blob/main/dataclear/shuffle_Data.py"><code class="code-chip">shuffle_Data.py</code></a> / <a href="https://github.com/UnstoppableCurry/High-quality-Chinese-Q-A-dataset/blob/main/dataclear/util.py"><code class="code-chip">util.py</code></a></h3>
+              <p>README 提供 1 轮与 50 轮 shuffle 的下载包。<code class="code-chip">shuffle_Data.py</code> 对 QA 文本行做 shuffle；<code class="code-chip">util.py</code> 按 CPU 核数切分并行。另有 <a href="https://github.com/UnstoppableCurry/High-quality-Chinese-Q-A-dataset/blob/main/dataclear/test.py"><code class="code-chip">test.py</code></a> 用于统计关系名频次，同样依赖本地绝对路径。</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="examples" aria-labelledby="examples-title">
+      <div class="wrap">
+        <h2 id="examples-title">已核验样例</h2>
+        <p class="section-lead">只使用 README 里原有的四张示例截图，以及 README 逐字给出的梨果寄生属 CoT 文本。不另造问答。</p>
+
+        <div class="two-col">
+          <figure>
+            <img
+              src="./assets/examples/qa-pairs.png"
+              width="1259"
+              height="105"
+              alt="三行 q/a 文本：N-甲基甲酰胺的别名、资产周转率的性质、周春芽的国籍。"
+              loading="lazy"
+              decoding="async">
+            <figcaption>
+              Q&amp;A 数据 Example。来自 README。
+              <a href="https://user-images.githubusercontent.com/65523997/230324020-5a481e73-420c-48fd-9eb3-2ef2491ab969.png">原图</a>
+            </figcaption>
+          </figure>
+          <div class="sample">
+            <h3>截图中可见的三组问答</h3>
+            <dl>
+              <div class="qa">
+                <dt>q: N-甲基甲酰胺的别名是什么？</dt>
+                <dd>a: N-甲基甲酰胺的别名是甲基甲酰胺。</dd>
+              </div>
+              <div class="qa">
+                <dt>q: 资产周转率的性质是什么？</dt>
+                <dd>a: 资产周转率的性质是财务分析指标。</dd>
+              </div>
+              <div class="qa">
+                <dt>q: 周春芽的国籍是什么？</dt>
+                <dd>a: 周春芽的国籍是中国。</dd>
+              </div>
+            </dl>
+            <p>句式与 <code class="code-chip">clear_qa_data.py</code> 的「X 的 Y 是什么 / X 的 Y 是 Z」模板一致。</p>
+          </div>
+        </div>
+
+        <figure style="margin-top:1.15rem">
+          <img
+            src="./assets/examples/cot-prompt.png"
+            width="1178"
+            height="413"
+            alt="梨果寄生属的 CoT 样例：先列举已知信息，再给出描述、中文学名、拉丁学名、界、科、物种数量、中国植物志与标签。"
+            loading="lazy"
+            decoding="async">
+          <figcaption>
+            Q&amp;A &amp; Cot Prompt 数据 Example。README 说明上图已整理换行与制表符以便阅读。
+            <a href="https://user-images.githubusercontent.com/65523997/230334017-121df4a8-a991-43b8-b1fe-775cd88ad287.png">原图</a>
+          </figcaption>
+        </figure>
+
+        <div class="sample" style="margin-top:1.15rem">
+          <h3>README 给出的真实数据格式</h3>
+          <p>下面两段同一条样本：整理版便于阅读，原始版按 README 逐字保留（含「中国植物&gt;志」换行痕迹）。</p>
+          <div class="tabs" role="tablist" aria-label="CoT 样例视图">
+            <button type="button" role="tab" id="tab-read" aria-controls="panel-read" aria-selected="true">整理阅读</button>
+            <button type="button" role="tab" id="tab-raw" aria-controls="panel-raw" aria-selected="false" tabindex="-1">README 原文</button>
+          </div>
+          <div class="panel" id="panel-read" role="tabpanel" aria-labelledby="tab-read">
+            <pre class="code-block">q:什么是梨果寄生属？
+  a:我们可以这样做, 先考虑一下我们知道梨果寄生属的什么信息？
+ 我们知道:
+	0. 如何描述梨果寄生属。
+	1. 梨果寄生属的中文学名。
+	2. 梨果寄生属的拉丁学名。
+	3. 梨果寄生属的界。
+	4. 梨果寄生属的科。
+	5. 梨果寄生属的物种数量。
+	6. 梨果寄生属的中国植物志。
+	7. 梨果寄生属的标签。
+那么很显然答案是
+	0. 这样描述其梨果寄生属，分布于亚洲东南部和南部，我国产11种，其中红花寄生S. parasitica L. 供药用。
+	1. 其中文学名是梨果寄生属。
+	2. 其拉丁学名是Scurrula L.。
+	3. 其界是植物界。
+	4. 其科是桑寄生科。
+	5. 其物种数量是约60种。
+	6. 其中国植物志是24:108。
+	7. 梨果寄生属的标签可以是自然,生物物种,植物。</pre>
+          </div>
+          <div class="panel" id="panel-raw" role="tabpanel" aria-labelledby="tab-raw" hidden>
+            <pre class="code-block">q:什么是梨果寄生属？\n  a:我们可以这样做, 先考虑一下我们知道梨果寄生属的什么信息？\n 我们知道:\n\t0. 如何描述梨果寄生属。\n\t1. 梨果寄生属的中文学名。\n\t2. 梨果寄生属的拉丁学名。\n\t3. 梨果寄生属的界。\n\t4. 梨果寄生属的科。\n\t5. 梨果寄生属的物种数量。\n\t6. 梨果寄生属的中国植物志。\n\t7. 梨果寄生属的标签。\n那么很显然答案是\n\t0. 这样描述其梨果寄生属，分布于亚洲东南部和南部，我国产11种，其中红花寄生S. parasitica L. 供药用。\n\t1. 其中文学名是梨果寄生属。\n\t2. 其拉丁学名是Scurrula L.。\n\t3. 其界是植物界。\n\t4. 其科是桑寄生科。\n\t5. 其物种数量是约60种。\n\t6. 其中国植物&gt;志是24:108。\n\t7. 梨果寄生属的标签可以是自然,生物物种,植物。\n</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="usage" aria-labelledby="usage-title">
+      <div class="wrap">
+        <h2 id="usage-title">使用方式</h2>
+        <p class="section-lead">数据包放在百度网盘，由 README 给出提取码。仓库本身是脚本与说明，不是可在浏览器运行的数据集运行时。</p>
+        <div class="card-grid">
+          <article class="download">
+            <h3>Q&amp;A 数据</h3>
+            <p>做法：拼接三元组构造 QA，再 shuffle。</p>
+            <p><a href="https://pan.baidu.com/s/1JnRp8orT8kAIjAoZI9QA4g?pwd=kbge">百度网盘下载</a></p>
+            <p class="pwd">提取码 <code class="code-chip">kbge</code> <button class="copy" type="button" data-copy="kbge">复制</button></p>
+          </article>
+          <article class="download">
+            <h3>1 轮 shuffle CoT</h3>
+            <p>Q&amp;A &amp; Cot Prompt 数据，1 轮 shuffle。</p>
+            <p><a href="https://pan.baidu.com/s/1K1rCqOmJ0ZsUd4FFY6z4rg?pwd=fw69">百度网盘下载</a></p>
+            <p class="pwd">提取码 <code class="code-chip">fw69</code> <button class="copy" type="button" data-copy="fw69">复制</button></p>
+          </article>
+          <article class="download">
+            <h3>50 轮 shuffle CoT</h3>
+            <p>Q&amp;A &amp; Cot Prompt 数据，50 轮 shuffle。</p>
+            <p><a href="https://pan.baidu.com/s/1MF-QJTLOXpvuzrGxt0GQiw?pwd=ctou">百度网盘下载</a></p>
+            <p class="pwd">提取码 <code class="code-chip">ctou</code> <button class="copy" type="button" data-copy="ctou">复制</button></p>
+          </article>
+          <article class="download">
+            <h3>本地脚本</h3>
+            <p>克隆仓库后阅读 <code class="code-chip">dataclear/</code>。入口脚本含绝对路径与作者环境假设，需按本机数据位置修改后再运行。</p>
+            <p><a href="https://github.com/UnstoppableCurry/High-quality-Chinese-Q-A-dataset">打开 GitHub 仓库</a></p>
+          </article>
+        </div>
+
+        <div class="table-wrap" style="margin-top:1.2rem">
+          <table>
+            <caption class="visually-hidden">仓库脚本与用途</caption>
+            <thead>
+              <tr>
+                <th scope="col">脚本</th>
+                <th scope="col">从源码可见的用途</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code class="code-chip">data_load.py</code></td>
+                <td>ownthink V2 分片读写；可选 Neo4j 实体 / 关系导出</td>
+              </tr>
+              <tr>
+                <td><code class="code-chip">data_load2.py</code></td>
+                <td>百万行分块转 entity / relationship CSV</td>
+              </tr>
+              <tr>
+                <td><code class="code-chip">mearge_data.py</code></td>
+                <td>合并 CSV 分片</td>
+              </tr>
+              <tr>
+                <td><code class="code-chip">clear_qa_data.py</code></td>
+                <td>三元组模板化为 <code>q:</code> / <code>a:</code> 问答</td>
+              </tr>
+              <tr>
+                <td><code class="code-chip">clear_强化_data.py</code></td>
+                <td>按实体聚合，生成带已知信息清单的 CoT Prompt</td>
+              </tr>
+              <tr>
+                <td><code class="code-chip">shuffle_Data.py</code></td>
+                <td>打乱 QA 文本行</td>
+              </tr>
+              <tr>
+                <td><code class="code-chip">util.py</code></td>
+                <td>按 CPU 核数并行</td>
+              </tr>
+              <tr>
+                <td><code class="code-chip">test.py</code></td>
+                <td>统计关系名频次</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="limits" aria-labelledby="limits-title">
+      <div class="wrap">
+        <h2 id="limits-title">局限与声明</h2>
+        <div class="callout">
+          <p>这是数据与脚本仓库的说明页。它不能代替数据包本身，也不能在浏览器里复现清洗或微调。</p>
+        </div>
+        <ul class="limits">
+          <li>部分关系与实体难以写成通顺中文，README 写明仍需更细致清洗。</li>
+          <li>仓库未公布清洗后问答条数、字段覆盖率或质量抽检比例，本页不估算。</li>
+          <li>README 的 <span lang="en">RWKV 1B5</span> / <span lang="en">LoRA</span> 记录是作者定性观察，没有给出评测集、超参或分数。</li>
+          <li>「最大开源」是 README 标题用语，不是本页独立比较后的结论。</li>
+          <li>数据包在百度网盘，可用性取决于网盘链接是否仍有效；本站不镜像数据。</li>
+          <li>脚本含绝对路径、未提交的输入文件和实验痕迹，不能当作开箱即用的流水线产品。</li>
+          <li>本页不提供在线问答接口，也不在浏览器中执行 <code class="code-chip">dataclear/</code> 脚本。</li>
+        </ul>
+        <p>若要一起贡献，README 欢迎发邮件至 <a href="mailto:294957500@qq.com">294957500@qq.com</a>。原文写：「此诚存亡之秋,期望大家一起努力构建中文数据集」。</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <nav class="footer-nav" aria-label="页脚">
+        <a href="./">首页</a>
+        <a href="https://github.com/UnstoppableCurry/High-quality-Chinese-Q-A-dataset">GitHub</a>
+        <a href="https://github.com/UnstoppableCurry/High-quality-Chinese-Q-A-dataset/blob/main/README.md">README</a>
+        <a href="mailto:294957500@qq.com">联系邮箱</a>
+      </nav>
+      <p>静态 GitHub Pages 展示。内容以仓库 README 与 <code class="code-chip">dataclear/</code> 源码为准。仓库未附许可证文件。</p>
+    </div>
+  </footer>
+
+  <script src="./script.js" defer></script>
+</body>
+</html>

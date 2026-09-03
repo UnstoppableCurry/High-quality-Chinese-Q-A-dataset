@@ -1,6 +1,8 @@
 # High-quality-Chinese-Q-A-dataset
 最大开源中文知识问答三元组数据集 ,助力中文LLM.The largest open-source Chinese Q&amp;A dataset, supporting Chinese LLM
 
+**项目展示页（静态说明，非在线运行环境）：** https://unstoppablecurry.github.io/High-quality-Chinese-Q-A-dataset/
+
 此项目通过清洗ownthink_v2 知识图谱三元组数据来实现 Q&A数据 以及Prompt qa 多轮 COT数据
   - 原始数据 Example
     -  ![image](https://user-images.githubusercontent.com/65523997/230326683-6175c2e8-ee27-4008-b71e-eb4f5e29f594.png)
