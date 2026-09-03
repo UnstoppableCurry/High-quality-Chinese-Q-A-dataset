@@ -75,6 +75,7 @@ html[data-theme="dark"] {
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5.25rem;
   color-scheme: light;
 }
 
@@ -378,6 +379,7 @@ a:hover {
 .section {
   padding: 2.6rem 0;
   border-top: 1px solid var(--line);
+  scroll-margin-top: 5.25rem;
 }
 
 .section h2 {
@@ -613,8 +615,12 @@ pre,
   background: var(--paper-2);
 }
 
+#limits {
+  padding-bottom: 4.5rem;
+}
+
 .site-footer {
-  padding: 2rem 0 2.8rem;
+  padding: 2rem 0 8rem;
   border-top: 1px solid var(--line);
   color: var(--muted);
   font-size: 0.92rem;

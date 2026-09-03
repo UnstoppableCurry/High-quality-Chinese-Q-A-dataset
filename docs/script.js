@@ -32,7 +32,25 @@
 
   if (nav) {
     nav.addEventListener("click", function (event) {
-      if (event.target.closest("a")) setExpanded(false);
+      var link = event.target.closest("a");
+      if (!link) return;
+      var href = link.getAttribute("href") || "";
+      if (href.charAt(0) !== "#") {
+        setExpanded(false);
+        return;
+      }
+      var target = document.getElementById(href.slice(1));
+      if (!target) return;
+      event.preventDefault();
+      setExpanded(false);
+      window.requestAnimationFrame(function () {
+        target.scrollIntoView({
+          behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+          block: "start"
+        });
+        if (history.replaceState) history.replaceState(null, "", href);
+        else window.location.hash = href;
+      });
     });
   }
 
@@ -52,23 +70,41 @@
     });
   }
 
+  function copyText(value) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      return navigator.clipboard.writeText(value);
+    }
+    return new Promise(function (resolve, reject) {
+      var area = document.createElement("textarea");
+      area.value = value;
+      area.setAttribute("readonly", "");
+      area.style.position = "fixed";
+      area.style.left = "-9999px";
+      document.body.appendChild(area);
+      area.select();
+      try {
+        if (document.execCommand("copy")) resolve();
+        else reject(new Error("copy failed"));
+      } catch (err) {
+        reject(err);
+      } finally {
+        document.body.removeChild(area);
+      }
+    });
+  }
+
   document.querySelectorAll("[data-copy]").forEach(function (button) {
     button.addEventListener("click", function () {
       var value = button.getAttribute("data-copy") || "";
-      var done = function () {
-        var previous = button.textContent;
+      var previous = button.textContent;
+      copyText(value).catch(function () {
+        window.prompt("复制提取码", value);
+      }).finally(function () {
         button.textContent = "已复制";
         window.setTimeout(function () {
           button.textContent = previous;
         }, 1600);
-      };
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(value).then(done).catch(function () {
-          window.prompt("复制提取码", value);
-        });
-      } else {
-        window.prompt("复制提取码", value);
-      }
+      });
     });
   });
 
