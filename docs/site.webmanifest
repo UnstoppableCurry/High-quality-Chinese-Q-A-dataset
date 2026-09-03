@@ -1,0 +1,28 @@
+{
+  "name": "高质量中文知识问答数据集",
+  "short_name": "中文 QA 数据集",
+  "description": "ownthink_v2 三元组清洗得到的中文 Q&A 与 CoT Prompt 数据展示页。静态说明，非在线运行环境。",
+  "lang": "zh-CN",
+  "start_url": "./",
+  "scope": "./",
+  "display": "browser",
+  "background_color": "#f4efe6",
+  "theme_color": "#9b1d1d",
+  "icons": [
+    {
+      "src": "./assets/favicon-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "./assets/favicon-48.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "./assets/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
